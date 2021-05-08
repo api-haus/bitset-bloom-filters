@@ -30,20 +30,6 @@ const XXH = require('xxhashjs')
 const seed = utils.getDefaultSeed()
 
 describe('Utils', () => {
-  describe('#allocateArray', () => {
-    it('should allocate an array with the given size and a default value', () => {
-      const array = utils.allocateArray(15, 1)
-      array.length.should.equal(15)
-      array.forEach(value => value.should.equal(1))
-    })
-
-    it('should allow the use of a function to set the default value', () => {
-      const array = utils.allocateArray(15, () => 'foo')
-      array.length.should.equal(15)
-      array.forEach(value => value.should.equal('foo'))
-    })
-  })
-
   describe('#doubleHashing', () => {
     it('should perform a double hashing', () => {
       const hashA = Math.random(Number.MIN_VALUE, Number.MAX_VALUE / 2)

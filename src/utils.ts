@@ -25,6 +25,7 @@ SOFTWARE.
 'use strict'
 
 import XXH from 'xxhashjs'
+import FastBitSet from 'fastbitset';
 
 /**
  * Utilitaries functions
@@ -45,22 +46,6 @@ export interface TwoHashes {
 }
 
 export type HashableInput = string | ArrayBuffer | Buffer
-
-/**
- * Create a new array fill with a base value
- * @param size - The size of the array
- * @param defaultValue - The default value used to fill the array. If it's a function, it will be invoked to get the default value.
- * @return A newly allocated array
- * @memberof Utils
- */
-export function allocateArray<T> (size: number, defaultValue: T | (() => T)): Array<T> {
-  const array: Array<T> = new Array(size)
-  const getDefault = (typeof defaultValue === 'function') ? defaultValue as () => T : () => defaultValue
-  for (let ind = 0; ind < size; ind++) {
-    array[ind] = getDefault()
-  }
-  return array
-}
 
 /**
  * (64-bits only) Hash a value into two values (in hex or integer format)

@@ -26,9 +26,9 @@ SOFTWARE.
 
 import ClassicFilter from '../interfaces/classic-filter'
 import BaseFilter from '../base-filter'
-import { AutoExportable, Field, Parameter } from '../exportable'
 import { optimalFilterSize, optimalHashes } from '../formulas'
-import { HashableInput, allocateArray, getDistinctIndices } from '../utils'
+import { HashableInput, getDistinctIndices } from '../utils'
+import FastBitSet from "fastbitset";
 
 /**
  * A Bloom filter is a space-efficient probabilistic data structure, conceived by Burton Howard Bloom in 1970,
@@ -39,18 +39,13 @@ import { HashableInput, allocateArray, getDistinctIndices } from '../utils'
  * @author Thomas Minier
  * @author Arnaud Grall
  */
-@AutoExportable<BloomFilter>('BloomFilter', ['_seed'])
 export default class BloomFilter extends BaseFilter implements ClassicFilter<HashableInput> {
-  @Field()
   private _size: number
 
-  @Field()
   private _nbHashes: number
 
-  @Field()
-  private _filter: Array<number>
+  private _filter: FastBitSet
 
-  @Field()
   private _length: number
 
   /**
@@ -58,14 +53,14 @@ export default class BloomFilter extends BaseFilter implements ClassicFilter<Has
    * @param size - The number of cells
    * @param nbHashes - The number of hash functions used
    */
-  constructor (@Parameter('_size') size: number, @Parameter('_nbHashes') nbHashes: number) {
+  constructor (size: number, nbHashes: number) {
     super()
     if (nbHashes < 1) {
       throw new Error(`A BloomFilter cannot uses less than one hash function, while you tried to use ${nbHashes}.`)
     }
     this._size = size
     this._nbHashes = nbHashes
-    this._filter = allocateArray(this._size, 0)
+    this._filter = new FastBitSet()
     this._length = 0
   }
 
@@ -123,7 +118,7 @@ export default class BloomFilter extends BaseFilter implements ClassicFilter<Has
   add (element: HashableInput): void {
     const indexes = getDistinctIndices(element, this._size, this._nbHashes, this.seed)
     for (let i = 0; i < indexes.length; i++) {
-      this._filter[indexes[i]] = 1
+      this._filter.add(indexes[i]);
     }
     this._length++
   }
@@ -141,7 +136,7 @@ export default class BloomFilter extends BaseFilter implements ClassicFilter<Has
   has (element: HashableInput): boolean {
     const indexes = getDistinctIndices(element, this._size, this._nbHashes, this.seed)
     for (let i = 0; i < indexes.length; i++) {
-      if (!this._filter[indexes[i]]) {
+      if (!this._filter.has(indexes[i])) {
         return false
       }
     }
@@ -168,6 +163,6 @@ export default class BloomFilter extends BaseFilter implements ClassicFilter<Has
     if (this._size !== other._size || this._nbHashes !== other._nbHashes || this._length !== other._length) {
       return false
     }
-    return this._filter.every((value, index) => other._filter[index] === value)
+    return this._filter.equals(other._filter)
   }
 }
