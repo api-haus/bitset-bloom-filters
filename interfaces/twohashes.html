@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TwoHashes | bloom-filters - v1.3.4</title>
+	<title>TwoHashes | bitset-bloom-filters - v0.1.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">bloom-filters - v1.3.4</a>
+					<a href="../index.html" class="title">bitset-bloom-filters - v0.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -114,7 +114,7 @@
 					<div class="tsd-signature tsd-kind-icon">first<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Callidon/bloom-filters/blob/0fce71c/src/utils.ts#L43">src/utils.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/yurihq/bitset-bloom-filters/blob/eb30af3/src/utils.ts#L44">utils.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -124,7 +124,7 @@
 					<div class="tsd-signature tsd-kind-icon">second<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Callidon/bloom-filters/blob/0fce71c/src/utils.ts#L44">src/utils.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/yurihq/bitset-bloom-filters/blob/eb30af3/src/utils.ts#L45">utils.ts:45</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -140,6 +140,15 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="../classes/basefilter.html" class="tsd-kind-icon">Base<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/bloomfilter.html" class="tsd-kind-icon">Bloom<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="classicfilter.html" class="tsd-kind-icon">Classic<wbr>Filter</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
@@ -155,6 +164,60 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#hashableinput" class="tsd-kind-icon">Hashable<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#allinonehashtwice" class="tsd-kind-icon">all<wbr>InOne<wbr>Hash<wbr>Twice</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#doublehashing" class="tsd-kind-icon">double<wbr>Hashing</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getdefaultseed" class="tsd-kind-icon">get<wbr>Default<wbr>Seed</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getdistinctindices" class="tsd-kind-icon">get<wbr>Distinct<wbr>Indices</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getindices" class="tsd-kind-icon">get<wbr>Indices</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#hashasint" class="tsd-kind-icon">hash<wbr>AsInt</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#hashasstring" class="tsd-kind-icon">hash<wbr>AsString</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#hashintandstring" class="tsd-kind-icon">hash<wbr>Int<wbr>And<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#hashtwice" class="tsd-kind-icon">hash<wbr>Twice</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#hashtwiceasstring" class="tsd-kind-icon">hash<wbr>Twice<wbr>AsString</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#hex2bin" class="tsd-kind-icon">hex2bin</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#isemptybuffer" class="tsd-kind-icon">is<wbr>Empty<wbr>Buffer</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#optimalfiltersize" class="tsd-kind-icon">optimal<wbr>Filter<wbr>Size</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#optimalhashes" class="tsd-kind-icon">optimal<wbr>Hashes</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#power2" class="tsd-kind-icon">power2</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#randomint" class="tsd-kind-icon">random<wbr>Int</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#xorbuffer" class="tsd-kind-icon">xor<wbr>Buffer</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
