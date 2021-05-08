@@ -1,6 +1,6 @@
 {
   "name": "bitset-bloom-filters",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JS implementation of Bloom Filter using FastBitSet.js",
   "main": "dist/api.js",
   "scripts": {
